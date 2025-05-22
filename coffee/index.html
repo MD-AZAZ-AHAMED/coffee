@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 250px;
+        width: 300px;
+        position: relative;
+      }
+      .container {
+        height: 250px;
+        width: 300px;
+        position: relative;
+        overflow: hidden;
+        background-image: url("./bg.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      img {
+        position: absolute;
+        display: none;
+      }
+      .logo {
+        top: 5px;
+        left: 2px;
+        width: 70px;
+      }
+      .brand {
+        top: 2px;
+        right: 2px;
+      }
+      .pack {
+        top: 80px;
+        left: 25px;
+        width: 250px;
+        rotate: 15deg;
+      }
+      .text1 {
+        top: 10px;
+        left: 100px;
+        width: 130px;
+        rotate: 13deg;
+      }
+      .text2 {
+        bottom: 2px;
+        left: 30px;
+        width: 250px;
+      }
+      .last {
+        top: 65px;
+        left: 75px;
+        width: 150px;
+        display: none;
+      }
+      .last2 {
+        bottom: 50px;
+        left: 5px;
+        width: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="./logo.png" alt="" class="logo" />
+      <img src="./brand.png" alt="" class="brand" />
+      <img src="./text1.png" alt="" class="text1" />
+
+      <img src="./last.png" alt="" class="last" />
+      <img src="./last.png" alt="" class="last2" />
+      <img src="./pack.png" alt="" class="pack" />
+      <img src="./text2.png" class="text2" alt="" />
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      const logo = document.querySelector(".logo");
+      const brand = document.querySelector(".brand");
+      const pack = document.querySelector(".pack");
+      const text1 = document.querySelector(".text1");
+      const text2 = document.querySelector(".text2");
+      const last = document.querySelector(".last");
+      const last2 = document.querySelector(".last2");
+
+      const tl = gsap.timeline();
+
+      tl.from(logo, {
+        duration: 0.7,
+        x: -150,
+        opacity: 0,
+        ease: "power2.out",
+        onSatrt: () => {
+          logo.style.display = "block";
+        },
+      })
+        .from(
+          brand,
+          {
+            duration: 0.7,
+            y: -150,
+            opacity: 0,
+            ease: "power2.out",
+            onSatrt: () => {
+              brand.style.display = "block";
+            },
+          },
+          "-=0.5"
+        )
+        .from(
+          pack,
+          {
+            duration: 1,
+            clipPath: "inset(0 100% 0 100%)",
+            ease: "power2.out",
+            onSatrt: () => {
+              pack.style.display = "block";
+            },
+          },
+          "-=0.5"
+        )
+        .from(
+          text1,
+          {
+            duration: 0.7,
+            y: 80,
+            opacity: 0,
+            ease: "power2.out",
+            onSatrt: () => {
+              text1.style.display = "block";
+            },
+          },
+          "-=0.4"
+        )
+        .from(
+          text2,
+          {
+            duration: 1,
+            clipPath: "inset(100% 0% 0% 100%)",
+            ease: "power2.out",
+            onSatrt: () => {
+              text2.style.display = "block";
+            },
+          },
+          "-=0.7"
+        )
+        .from(
+          last2,
+          {
+            duration: 0.7,
+            x: 70,
+            y: -70,
+            opacity: 0,
+            ease: "power2.out",
+            onSatrt: () => {
+              last2.style.display = "block";
+            },
+          },
+          "-=0.7"
+        );
+    </script>
+  </body>
+</html>
